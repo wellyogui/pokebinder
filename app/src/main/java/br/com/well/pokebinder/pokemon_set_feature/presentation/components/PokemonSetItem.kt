@@ -38,7 +38,7 @@ fun PokemonSetItem(
     releaseDate: String,
     onClick: (id: String) -> Unit
 ) {
-    Column(modifier = modifier.background(black)) {
+    Box(modifier = modifier.background(black)) {
         Card(
             modifier = Modifier
                 .fillMaxSize()
@@ -67,39 +67,7 @@ fun PokemonSetItem(
                         .height(150.dp)
                 )
 
-                Box {
-                    AsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current).data(symbol).crossfade(true)
-                            .build(),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .padding(vertical = 10.dp)
-                            .size(40.dp)
-                    )
-
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.Center)) {
-                        Text(
-                            text = name,
-                            color = white,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            modifier = Modifier
-                                .align(Alignment.CenterHorizontally)
-                                .padding(top = 10.dp)
-                        )
-                        Text(
-                            text = releaseDate,
-                            color = white,
-                            fontSize = 14.sp,
-                            modifier = Modifier
-                                .align(Alignment.CenterHorizontally)
-                                .padding(bottom = 4.dp)
-                        )
-                    }
-
-                }
+                PokemonSetDescriptionItem(name = name, symbol = symbol, releaseDate = releaseDate)
             }
         }
     }
