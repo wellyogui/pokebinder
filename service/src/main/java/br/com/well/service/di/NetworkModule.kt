@@ -2,6 +2,7 @@ package br.com.well.service.di
 
 import br.com.well.service.BuildConfig
 import br.com.well.service.ParamsInterceptor
+import br.com.well.service.card.PokemonCardService
 import br.com.well.service.set.PokemonSetService
 import dagger.Module
 import dagger.Provides
@@ -51,5 +52,18 @@ object NetworkModule {
             .addConverterFactory(gsonConverterFactory)
             .build()
             .create(PokemonSetService::class.java)
+    }
+
+    @Provides
+    fun provideCardService(
+        client: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): PokemonCardService {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(client)
+            .addConverterFactory(gsonConverterFactory)
+            .build()
+            .create(PokemonCardService::class.java)
     }
 }
