@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import br.com.well.pokebinder.ui.theme.almostBlack
 import br.com.well.pokebinder.ui.theme.black
 import br.com.well.pokebinder.ui.theme.lightGray
 import br.com.well.pokebinder.ui.theme.redAlpha
@@ -29,7 +30,7 @@ fun BottomNavigationBar(
     }
     val items = listOf(BottomNavItem.PokemonSets, BottomNavItem.Search)
 
-    NavigationBar(containerColor = black) {
+    NavigationBar(containerColor = almostBlack) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(selected = selectedItem == index,
                 colors = NavigationBarItemDefaults.colors(
