@@ -17,7 +17,7 @@ import br.com.well.pokebinder.ui.theme.white
 @Composable
 fun PokemonSetListScreen(
     uiState: PokemonSetListUiState,
-    navigateToPokemonSetDetails: (Int) -> Unit
+    navigateToPokemonSetDetails: (String, String) -> Unit
 ) {
 
     val pokemonSetList = uiState.pokemonSetList.collectAsLazyPagingItems()
@@ -29,6 +29,7 @@ fun PokemonSetListScreen(
     }, content = { paddingValues ->
         PokemonSetContent(pagingPokemonSet = pokemonSetList,
             paddingValues = paddingValues) {
+            navigateToPokemonSetDetails(it.id, it.name)
         }
     })
 }

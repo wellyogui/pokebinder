@@ -16,7 +16,7 @@ class GetPokemonCardListUseCaseImpl @Inject constructor(
 ): GetPokemonCardListUseCase {
     override fun invoke(set: String): Flow<PagingData<PokemonCard>> {
         return pokemonCardRepository.getCards(
-            set,
+            "set.id:$set",
             pagingConfig = PagingConfig(
                 pageSize = 10,
                 initialLoadSize = 10
